@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Movie Database</title>
+  </head>
+  <body>
+    <header>
+      <a href="movies.html">Movie Database</a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="movies.html">Movies</a></li>
+          <li><a href="report.html">Report</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h2>Movie Details</h2>
+      <section id="movieDetail"></section>
+    </main>
+    </br>
+    <footer>&copy; 2023 Company Name. All rights reserved.</footer>
+
+    <script>
+      let movies = [
+        {
+          id: "1",
+          Movie: "Movie 1",
+          Genre: "Action",
+          Details: "This is an action-packed movie.",
+          ReleaseDate: "2023-01-15",
+          Director: "John Doe",
+        },
+
+        {
+          id: "2",
+          Movie: "Movie 2",
+          Genre: "Drama",
+          Details: "A dramatic story unfolds in this movie.",
+          ReleaseDate: "2023-02-20",
+          Director: "Jane Smith",
+        },
+
+        {
+          id: "3",
+          Movie: "Movie 3",
+          Genre: "Comedy",
+          Details: "Get ready to laugh with this comedy.",
+          ReleaseDate: "2023-05-20",
+          Director: "Jane Walk",
+        },
+      ];
+
+      console.log(window.location);
+      console.log(window.location.href);
+
+      function getParameterById(id) {   
+        let url = new URL(window.location.href);
+        return url.searchParams.get(id);
+      }
+      let movieId = getParameterById("id");
+      let moviee;
+      for (let i = 0; i < movies.length; i++) {
+        if (movies[i].id === movieId) {
+          moviee = movies[i];
+        }
+      }
+
+      let movieDetailElement = document.getElementById("movieDetail");
+      if (moviee) {
+        movieDetailElement.innerHTML = `<h2>${moviee.Movie}</h2
+            <ul>
+                <li>Genre: ${moviee.Genre}</li>
+                <li>Details: ${moviee.Details}</li>
+                <li>ReleaseDate: ${moviee.ReleaseDate}</li>
+                <li>Director: ${moviee.Director}</li>
+            </ul>
+
+             `;
+      } else {
+        movieDetailElement.innerHTM = "Movie not found.";
+      }
+    </script>
+  </body>
+</html>
